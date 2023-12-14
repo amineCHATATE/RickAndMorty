@@ -1,6 +1,6 @@
 # Swift Rick & Morty App #
 
-![Rick & Morty App](https://github.com/amineCHATATE/RickAndMorty/main/cover.png)
+![Rick & Morty App]([https://raw.githubusercontent.com/amineCHATATE/RickAndMorty/main/cover.png]))
 
 ## Overview
 
