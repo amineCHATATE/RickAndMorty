@@ -35,6 +35,7 @@
 		FF47E73F2B2B6DC700AADFBF /* RMGetAllLocationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF47E73E2B2B6DC600AADFBF /* RMGetAllLocationsResponse.swift */; };
 		FF47E7412B2B7EA900AADFBF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FF47E7402B2B7EA900AADFBF /* README.md */; };
 		FF47E7432B2B7FCF00AADFBF /* cover.png in Resources */ = {isa = PBXBuildFile; fileRef = FF47E7422B2B7FCF00AADFBF /* cover.png */; };
+		FFED2B392B2D987A0075EEF7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFED2B382B2D987A0075EEF7 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		FF47E73E2B2B6DC600AADFBF /* RMGetAllLocationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMGetAllLocationsResponse.swift; sourceTree = "<group>"; };
 		FF47E7402B2B7EA900AADFBF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FF47E7422B2B7FCF00AADFBF /* cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cover.png; sourceTree = "<group>"; };
+		FFED2B382B2D987A0075EEF7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 		FF04E2562B25DE5900673CA1 /* RickMorty */ = {
 			isa = PBXGroup;
 			children = (
+				FFED2B372B2D98610075EEF7 /* Helpers */,
 				FF04E28A2B25E4B300673CA1 /* Resources */,
 				FF04E28B2B25E4BD00673CA1 /* Managers */,
 				FF04E2902B25E4EB00673CA1 /* APIClient */,
@@ -262,6 +265,14 @@
 				FF47E73E2B2B6DC600AADFBF /* RMGetAllLocationsResponse.swift */,
 			);
 			path = APIResponseTypes;
+			sourceTree = "<group>";
+		};
+		FFED2B372B2D98610075EEF7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FFED2B382B2D987A0075EEF7 /* Constants.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -397,6 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF04E2992B25EABA00673CA1 /* RMLocationViewController.swift in Sources */,
+				FFED2B392B2D987A0075EEF7 /* Constants.swift in Sources */,
 				FF04E29B2B25EACF00673CA1 /* RMCharacterViewController.swift in Sources */,
 				FF3FFCDC2B2A36B400EACC79 /* RMService.swift in Sources */,
 				FF04E2942B25E9F400673CA1 /* RMCharacter.swift in Sources */,
