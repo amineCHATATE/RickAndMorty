@@ -5,6 +5,7 @@
 //  Created by Amine CHATATE on 10/12/2023.
 //
 
+import Foundation
 import UIKit
 
 final class RMCharacterViewController: UIViewController {
@@ -17,6 +18,7 @@ final class RMCharacterViewController: UIViewController {
         
         view.backgroundColor = .systemBackground
         title = "Characters"
+        characterListView.delegate = self
         
         view.addSubview(characterListView)
         setConstraints()
@@ -30,5 +32,15 @@ final class RMCharacterViewController: UIViewController {
             characterListView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
+}
 
+extension RMCharacterViewController: RMCharacterListViewDelegate {
+    
+    func rmCharacterListView(_ characterListView: RMCharacterListView, didSelectCharacter character: RMCharacter) {
+        let viewModel = RMCharacterDetailViewViewModel(character: character)
+        let detailVC = RMCharacterDetailViewController(viewModel: viewModel)
+        detailVC.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
 }
