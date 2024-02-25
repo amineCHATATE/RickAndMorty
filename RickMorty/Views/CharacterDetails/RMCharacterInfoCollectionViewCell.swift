@@ -92,6 +92,11 @@ class RMCharacterInfoCollectionViewCell: UICollectionViewCell {
         contentView.layer.shadowOpacity = 0.4
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        setUpLayer()
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         valueLabel.text = nil

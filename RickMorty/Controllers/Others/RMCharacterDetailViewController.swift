@@ -29,7 +29,7 @@ final class RMCharacterDetailViewController: UIViewController {
         view.backgroundColor = .systemBackground        
         title = viewModel.title
         view.addSubviews(detailView)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(didTapShare))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(didTapSearch))
         addConstraints()
         detailView.collectionView?.delegate = self
         detailView.collectionView?.dataSource = self
@@ -45,7 +45,7 @@ final class RMCharacterDetailViewController: UIViewController {
     }
     
     @objc
-    private func didTapShare(){
+    private func didTapSearch(){
         
     }
 
@@ -87,7 +87,7 @@ extension RMCharacterDetailViewController: UICollectionViewDataSource {
             return cell
 
         case .episodes(viewModels: let viewModels):
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RMCharacterEpisodeCollectionViewCell.identifier, for: indexPath) as? RMCharacterEpisodeCollectionViewCell else { fatalError()}
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RMCharacterEpisodeCollectionViewCell.cellIdentifier, for: indexPath) as? RMCharacterEpisodeCollectionViewCell else { fatalError()}
             
             cell.configure(with: viewModels[indexPath.row])
             return cell

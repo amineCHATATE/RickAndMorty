@@ -13,9 +13,21 @@ final class RMservice {
     
     static let shared = RMservice()
     
+    private let cacheManager = RMAPICacheManager()
+    
     private init(){}
     
     public func execute<T: Codable>(_ request: RMRequest, expecting type: T.Type, completion: @escaping (Result<T, Error>) -> Void){
+        if let cachedData = cacheManager.cachedResponse(for: request.endpoint, url: request.url) {
+            do {
+                let result = try JSONDecoder().decode(type.self, from: cachedData)
+                completion(.success(result))
+            } catch {
+                completion(.failure(error))
+            }
+            return
+        }
+        
         guard let urlRequest = self.request(from: request) else {
             completion(.failure(RMServiceError.failedToCreateRequest))
             return
@@ -29,6 +41,7 @@ final class RMservice {
             
             do {
                 let result = try JSONDecoder().decode(type.self, from: data)
+                self.cacheManager.setCache(for: request.endpoint, url: request.url, data: data)
                 completion(.success(result))
             } catch {
                 completion(.failure(error))

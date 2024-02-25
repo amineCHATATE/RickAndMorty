@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol RMEpisodeDataRender {
     var name: String { get }
@@ -18,6 +19,7 @@ final class RMCharacterEpisodeCollectionViewCellViewModel {
     private let episodeDataUrl: URL?
     private var isFetching = false
     private var dataBlock: ((RMEpisodeDataRender) -> Void)?
+    public let borderColor: UIColor
     
     private var episode: RMEpisode? {
         didSet {
@@ -26,8 +28,9 @@ final class RMCharacterEpisodeCollectionViewCellViewModel {
         }
     }
     
-    init(episodeDataUrl: URL?){
+    init(episodeDataUrl: URL?, borderColor: UIColor = .systemBlue){
         self.episodeDataUrl = episodeDataUrl
+        self.borderColor = borderColor
     }
     
     public func registerForData(_ block: @escaping (RMEpisodeDataRender) -> Void){
@@ -57,4 +60,20 @@ final class RMCharacterEpisodeCollectionViewCellViewModel {
             }
         }
     }
+}
+
+extension RMCharacterEpisodeCollectionViewCellViewModel: Hashable {
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.episodeDataUrl?.absoluteString ?? "")
+    }
+    
+}
+
+extension RMCharacterEpisodeCollectionViewCellViewModel: Equatable {
+    
+    static func == (lhs: RMCharacterEpisodeCollectionViewCellViewModel, rhs: RMCharacterEpisodeCollectionViewCellViewModel) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+    
 }

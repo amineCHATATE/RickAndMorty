@@ -9,7 +9,7 @@ import UIKit
 
 final class RMCharcterCollectionViewCell: UICollectionViewCell {
     
-    static let identifier = "RMCharcterCollectionViewCell"
+    static let cellIdentifier = "RMCharcterCollectionViewCell"
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()

@@ -9,7 +9,7 @@ import UIKit
 
 class RMCharacterEpisodeCollectionViewCell: UICollectionViewCell {
     
-    static let identifier = "RMCharacterEpisodeCollectionViewCell"
+    static let cellIdentifier = "RMCharacterEpisodeCollectionViewCell"
 
     private let seasonLabel: UILabel = {
         let label = UILabel()
@@ -35,9 +35,6 @@ class RMCharacterEpisodeCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect){
         super.init(frame: frame)
         contentView.backgroundColor = .systemBackground
-        contentView.layer.cornerRadius = 8
-        //contentView.layer.borderWidth = 1
-        //contentView.layer.borderColor = UIColor.systemBlue.cgColor
         contentView.addSubviews(seasonLabel, nameLabel, airDateLabel)
         setupConstraints()
         setUpLayer()
@@ -72,6 +69,12 @@ class RMCharacterEpisodeCollectionViewCell: UICollectionViewCell {
         contentView.layer.shadowRadius = 4
         contentView.layer.shadowOffset = CGSize(width: 2, height: 2)
         contentView.layer.shadowOpacity = 0.4
+        contentView.layer.borderWidth = 1
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        setUpLayer()
     }
     
     override func prepareForReuse() {
@@ -88,6 +91,7 @@ class RMCharacterEpisodeCollectionViewCell: UICollectionViewCell {
             self?.airDateLabel.text = "Aired on" + data.airDate
         }
         viewModel.fetchEpisodes()
+        contentView.layer.borderColor = viewModel.borderColor.cgColor
     }
     
 }
