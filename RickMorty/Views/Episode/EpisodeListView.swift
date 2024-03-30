@@ -89,7 +89,7 @@ extension RMEpisodeListView: RMEpisodeListViewViewModelDelegate {
         collectionView.isHidden = false
         collectionView.reloadData()
 
-        UIView.animate(withDuration: 0.7) {
+        UIView.animate(withDuration: 1) {
             self.collectionView.alpha = 1
         }
     }

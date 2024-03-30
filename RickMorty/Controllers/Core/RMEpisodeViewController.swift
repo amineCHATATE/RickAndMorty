@@ -47,7 +47,6 @@ final class RMEpisodeViewController: UIViewController {
 extension RMEpisodeViewController: RMEpisodeListViewDelegate {
     
     func rmEpisodeListView(_ episodeListView: RMEpisodeListView, didSelectEpisode episode: RMEpisode) {
-        let viewModel = RMEpisodeDetailViewViewModel(endpointUrl: URL(string: episode.url))
         let detailVC = RMEpisodeDetailViewController(url: URL(string: episode.url))
         detailVC.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(detailVC, animated: true)
