@@ -100,7 +100,7 @@ final class RMCharcterCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    public func configure(with viewModel: RMCharacterCollectionViewCellViewMdel){
+    public func configure(with viewModel: RMCharacterCollectionViewCellViewModel){
         viewModel.fetchImage(completion: { [weak self] result in
             switch result {
                 case .success(let data):

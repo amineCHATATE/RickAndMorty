@@ -31,7 +31,6 @@ final class RMTabBarController: UITabBarController {
 
     private func createTabs(title: String, imageName: String, tag: Int, viewController: UIViewController) -> UINavigationController {
         
-        let viewController = viewController
         viewController.navigationItem.largeTitleDisplayMode = .automatic
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.tabBarItem = UITabBarItem(title: title, image: UIImage(systemName: imageName), tag: tag)

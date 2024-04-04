@@ -22,7 +22,7 @@ final class RMCharacterListViewViewModel: NSObject {
     private var characters: [RMCharacter] = [] {
         didSet{
             characters.forEach { character in
-                let viewModel = RMCharacterCollectionViewCellViewMdel(charcterName: character.name, charcterStatus: character.status, characterImageUrl: URL(string: character.image))
+                let viewModel = RMCharacterCollectionViewCellViewModel(charcterName: character.name, charcterStatus: character.status, characterImageUrl: URL(string: character.image))
                 if !characterCollectionViewCellViewMdels.contains(viewModel) {
                     characterCollectionViewCellViewMdels.append(viewModel)
                 }
@@ -30,7 +30,7 @@ final class RMCharacterListViewViewModel: NSObject {
         }
     }
     
-    private var characterCollectionViewCellViewMdels: [RMCharacterCollectionViewCellViewMdel] = []
+    private var characterCollectionViewCellViewMdels: [RMCharacterCollectionViewCellViewModel] = []
     private var apiInfo: RMGetAllCharactersResponse.Info? = nil
     
     func fetchCharacters()  {

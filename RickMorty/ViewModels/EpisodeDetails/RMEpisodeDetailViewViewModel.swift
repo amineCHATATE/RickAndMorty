@@ -23,7 +23,7 @@ final class RMEpisodeDetailViewViewModel {
     
     enum SectionType {
         case information(viewModels: [RMEpisodeInfoCollectionViewCellVieModel])
-        case characters(viewModels: [RMCharacterCollectionViewCellViewMdel])
+        case characters(viewModels: [RMCharacterCollectionViewCellViewModel])
     }
     
     public weak var delegate: RMEpisodeDetailViewViewModelDelegate?
@@ -61,7 +61,7 @@ final class RMEpisodeDetailViewViewModel {
                 .init(title: "Created", value: createdString),
             ]),
             .characters(viewModels: characters.compactMap({ character in
-                return RMCharacterCollectionViewCellViewMdel(
+                return RMCharacterCollectionViewCellViewModel(
                     charcterName: character.name,
                     charcterStatus: character.status,
                     characterImageUrl: URL(string: character.image)
