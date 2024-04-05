@@ -14,7 +14,7 @@ protocol RMLocationViewDelegate: AnyObject {
 final class RMLocationView: UIView {
 
     public weak var delegate: RMLocationViewDelegate?
-    
+        
     private var viewModel: RMLocationViewViewModel? {
         didSet {
             spinner.stopAnimating()
@@ -22,6 +22,12 @@ final class RMLocationView: UIView {
             tableView.reloadData()
             UIView.animate(withDuration: 1.0) {
                 self.tableView.alpha = 1
+            }
+            viewModel?.registerDidFinishPaginatitonBlock { [weak self] in
+                DispatchQueue.main.async {
+                    self?.tableView.tableFooterView = nil
+                    self?.tableView.reloadData()
+                }
             }
         }
     }
@@ -67,7 +73,6 @@ final class RMLocationView: UIView {
             tableView.rightAnchor.constraint(equalTo: rightAnchor),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
             tableView.leftAnchor.constraint(equalTo: leftAnchor),
-            
         ])
     }
     
@@ -107,6 +112,37 @@ extension RMLocationView: UITableViewDataSource {
         let cellViewModel = viewModels[indexPath.row]
         cell.configure(with: cellViewModel)
         return cell
+    }
+    
+    private func showLodingIndicator(){
+        let footer = RMTableLoadingFooterView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: 100))
+        tableView.tableFooterView = footer
+    }
+    
+}
+
+extension RMLocationView: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let viewModel = viewModel,
+              !viewModel.cellViewModels.isEmpty,
+              viewModel.shouldShowLoadMoreIndicator,
+              !viewModel.isLoadingMoreLocations
+        else { return }
+        
+        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { [weak self] time in
+            let offset = scrollView.contentOffset.y
+            let totalContentHeight = scrollView.contentSize.height
+            let totalScrollViewFixedHeight = scrollView.frame.size.height
+            
+            if offset >= (totalContentHeight - totalScrollViewFixedHeight - 120) {
+                DispatchQueue.main.async {
+                    self?.showLodingIndicator()
+                }
+                viewModel.fetchAdditionalLocations()
+            }
+            time.invalidate()
+        }
     }
     
 }

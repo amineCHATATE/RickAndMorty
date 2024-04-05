@@ -83,6 +83,7 @@
 		FFED2B3B2B2DB5FB0075EEF7 /* RMServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFED2B3A2B2DB5FB0075EEF7 /* RMServiceError.swift */; };
 		FFED2B3D2B2DE52B0075EEF7 /* RMCharacterListViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFED2B3C2B2DE52B0075EEF7 /* RMCharacterListViewViewModel.swift */; };
 		FFED2B3F2B2DE7EA0075EEF7 /* RMCharacterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFED2B3E2B2DE7EA0075EEF7 /* RMCharacterListView.swift */; };
+		FFF655AE2BBE87D600636721 /* RMTableLoadingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF655AD2BBE87D600636721 /* RMTableLoadingFooterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +184,7 @@
 		FFED2B3A2B2DB5FB0075EEF7 /* RMServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMServiceError.swift; sourceTree = "<group>"; };
 		FFED2B3C2B2DE52B0075EEF7 /* RMCharacterListViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterListViewViewModel.swift; sourceTree = "<group>"; };
 		FFED2B3E2B2DE7EA0075EEF7 /* RMCharacterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterListView.swift; sourceTree = "<group>"; };
+		FFF655AD2BBE87D600636721 /* RMTableLoadingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMTableLoadingFooterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -429,6 +431,7 @@
 			children = (
 				FF5F7B402BA597AE00D5B03F /* RMLocationView.swift */,
 				FF9FB22D2BA61A03004C53C3 /* RMLocationTableViewCell.swift */,
+				FFF655AD2BBE87D600636721 /* RMTableLoadingFooterView.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -746,6 +749,7 @@
 				FF04E2922B25E9E200673CA1 /* RMLocation.swift in Sources */,
 				FF8AC3D12B66A11800AA699F /* RMEpisodeInfoCollectionViewCellVieModel.swift in Sources */,
 				FF0B1F9C2B42E954001D3087 /* RMCharacterPhotoCollectionViewCellViewModel.swift in Sources */,
+				FFF655AE2BBE87D600636721 /* RMTableLoadingFooterView.swift in Sources */,
 				FFED15272BB82F2300B50EDC /* RMNoSearchResultsViewViewModel.swift in Sources */,
 				FF04E2622B25DE5900673CA1 /* RickMorty.xcdatamodeld in Sources */,
 				FF3FFCE22B2A3E5F00EACC79 /* RMOrigin.swift in Sources */,
