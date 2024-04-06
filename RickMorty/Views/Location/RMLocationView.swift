@@ -113,12 +113,7 @@ extension RMLocationView: UITableViewDataSource {
         cell.configure(with: cellViewModel)
         return cell
     }
-    
-    private func showLodingIndicator(){
-        let footer = RMTableLoadingFooterView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: 100))
-        tableView.tableFooterView = footer
-    }
-    
+       
 }
 
 extension RMLocationView: UIScrollViewDelegate {
@@ -143,6 +138,11 @@ extension RMLocationView: UIScrollViewDelegate {
             }
             time.invalidate()
         }
+    }
+    
+    private func showLodingIndicator(){
+        let footer = RMTableLoadingFooterView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: 100))
+        tableView.tableFooterView = footer
     }
     
 }

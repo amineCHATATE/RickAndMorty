@@ -35,7 +35,8 @@ final class RMSearchViewViewModel {
     }
     
     public func executeSearch(){
-
+        guard !searchText.trimmingCharacters(in: .whitespaces).isEmpty else { return }
+        
         var queryParam: [URLQueryItem] = [URLQueryItem(name: "name", value: searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed))]
         
         queryParam.append(contentsOf: optionMap.enumerated().compactMap({_, element in
@@ -70,30 +71,32 @@ final class RMSearchViewViewModel {
     }
     
     private func processSearchResults(model: Codable){
-        var resultVM: RMSearchResultViewModel?
+        var resultVM: RMSearchResultType?
+        var nextUrl: String?
+        
         if let charactersResponse = model as? RMGetAllCharactersResponse {
             resultVM = .characters(charactersResponse.results.compactMap({ character in
                 return RMCharacterCollectionViewCellViewModel(charcterName: character.name, charcterStatus: character.status, characterImageUrl: URL(string: character.image))
             }))
+            nextUrl = charactersResponse.info.next
         }
         else if let episodesResponse = model as? RMGetAllEpisodesResponse {
             resultVM = .episodes(episodesResponse.results.compactMap({ episode in
                 return RMCharacterEpisodeCollectionViewCellViewModel(episodeDataUrl: URL(string: episode.url))
             }))
+            nextUrl = episodesResponse.info.next
         }
         else if let locationsResponse = model as? RMGetAllLocationsResponse {
             resultVM = .locations(locationsResponse.results.compactMap({ location in
                 return RMLocationTableViewCellViewModel(location: location)
             }))
-        }
-        else
-        {
-
+            nextUrl = locationsResponse.info.next
         }
         
         if let results = resultVM {
             self.searchResultModel = model
-            self.searchResultHandler?(results)
+            let vm = RMSearchResultViewModel(results: results, next: nextUrl)
+            self.searchResultHandler?(vm)
         } else {
             self.handleNoResults()
         }
